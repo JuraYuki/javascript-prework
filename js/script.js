@@ -1,15 +1,19 @@
 
-  function clearMessages = ();{
+function playGame(playerInput){
+  clearMessages();
 
-  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  const randomNumber = Math.floor(Math.random() * 3 + 1);
   console.log('Wylosowana liczba to: ' + randomNumber);
 
   function getMoveName(argMoveId){
     if(argMoveId == 1){
+      printMessage("Wylosowano kamień");
       return 'kamień';
     } else if(argMoveId == 2){
+      printMessage("Wylosowano papier");
       return 'papier';
     } else if(argMoveId == 3){
+      printMessage("Wylosowano nożyce");
       return 'nożyce';
     } else {
       printMessage('Nie znam ruchu o id ' + argMoveId + '.');
@@ -32,24 +36,25 @@
       printMessage('Tym razem przegrywasz :(');
     }
   }
-
   const computerMove = getMoveName(randomNumber);
 
-  /*const playerInput = prompt('podaj 1, 2, 3, to numery oznaczające papier, kamień lub nozyce'); */
   const playerMove = getMoveName(playerInput);
 
   displayResult(computerMove, playerMove);
 
 }
 
+
 document.getElementById('play-rock').addEventListener('click', function(){
-  playGame('Zagrany kamień');
+  playGame(1);
 });
+ 
 
 document.getElementById('play-paper').addEventListener('click', function(){
-  playGame('Zagrany papier');
+  playGame(2);
 });
 
+
 document.getElementById('play-scissors').addEventListener('click', function(){
-  playGame('Zagrane nożyce');
+  playGame(3);
 });
